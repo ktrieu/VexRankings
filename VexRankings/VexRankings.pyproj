@@ -43,6 +43,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="app\models.py" />
+    <Compile Include="app\rankings\ranker.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app\rankings\vexdb.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app\rankings\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\tests.py" />
     <Compile Include="app\views.py" />
     <Compile Include="app\__init__.py" />
@@ -58,6 +67,7 @@
     <Folder Include="app\management\" />
     <Folder Include="app\management\commands\" />
     <Folder Include="app\migrations\" />
+    <Folder Include="app\rankings\" />
     <Folder Include="app\static\" />
     <Folder Include="app\static\app\" />
     <Folder Include="app\static\app\content\" />
