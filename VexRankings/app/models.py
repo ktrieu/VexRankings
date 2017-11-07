@@ -16,3 +16,7 @@ class Team(models.Model):
         self.elo_changes.append(0)
         for i in range(1, len(self.elos)):
             self.elo_changes.append(self.elos[i] - self.elos[i -1])
+
+    def __str__(self):
+        return self.name
+
