@@ -16,3 +16,7 @@ class Command(BaseCommand):
         for week_num in range(weeks_to_today):
             self.stdout.write(f'Ranking week {week_num}')
             vex_ranker.rank_matches_in_week(week_num)
+        self.stdout.write('Ranking complete.')
+        self.stdout.write('Saving...')
+        vex_ranker.save_to_database()
+        self.stdout.write('Complete.')
