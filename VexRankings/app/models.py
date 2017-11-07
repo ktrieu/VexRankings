@@ -3,6 +3,7 @@ Definition of models.
 """
 
 from django.db import models
+from django.contrib import admin
 import django.contrib.postgres.fields as pgfields
 
 class Team(models.Model):
@@ -20,3 +21,4 @@ class Team(models.Model):
     def __str__(self):
         return self.name
 
+admin.site.register(Team)
