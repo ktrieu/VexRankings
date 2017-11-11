@@ -19,7 +19,7 @@ def api_get_rankings_data(request):
         week_num = vexdb.get_num_weeks_to_today()
     else:
         week_num = int(week_num)
-    ordered_teams = Team.objects.all().order_by('elos')
+    ordered_teams = Team.objects.all()
     rankings_data = list()
     for team in ordered_teams:
         rankings_data.append({
