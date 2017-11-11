@@ -9,7 +9,7 @@ class Command(BaseCommand):
         self.stdout.write('Ranking teams...')
         weeks_to_today = vexdb.get_num_weeks_to_today()
         vex_ranker = ranker.Ranker()
-        for week_num in range(weeks_to_today + 1):
+        for week_num in range(weeks_to_today):
             self.stdout.write(f'Ranking week {week_num}')
             vex_ranker.rank_matches_in_week(week_num)
         self.stdout.write('Ranking complete.')
