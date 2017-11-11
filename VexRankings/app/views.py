@@ -24,8 +24,8 @@ def api_get_rankings_data(request):
     for team in ordered_teams:
         rankings_data.append({
             'name' : team.name,
-            'elo' : team.elos[week_num],
-            'elo_change' : team.elo_changes[week_num]
+            'elo' : team.elos[week_num - 1],
+            'elo_change' : team.elo_changes[week_num - 1]
             })
     return JsonResponse({ 'data' : rankings_data })
 
