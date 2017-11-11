@@ -69,6 +69,9 @@ class Ranker:
                 matches.extend(vexdb.get_matches_from_sku(sku))
                 self.ranked_skus.add(sku)
         for match in matches:
+            #skip unscored matches
+            if int(match['scored']) == 0:
+                continue
             red_names, blue_names = self.get_playing_team_names(match)
             for name in red_names + blue_names:
                 if name not in self.teams.keys():
