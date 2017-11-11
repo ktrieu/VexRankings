@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $("#rankings-table").DataTable({
+    var rankings_table = $("#rankings-table").DataTable({
         ajax : "/api/get_rankings",
         columns : [
             { data : "name" },
@@ -12,5 +12,9 @@ $(document).ready(function() {
                 render : $.fn.dataTable.render.number( ',', '.', 0)
             },
         ]
+    });
+
+    $("#week-select").change(function () {
+        rankings_table.ajax.url("/api/get_rankings?week_num=" + $("#week-select").val()).load()
     });
 });
