@@ -15,7 +15,14 @@
     <link type="text/css" rel="stylesheet" href={% static "app/datatables/datatables.css" %}>
 </head>
 <body>
-    <div class="container">
+    <div class="container pt-3">
+        <div class="form-group text-center">
+            <select class="custom-select center-block" id="week-select">
+                {% for week in week_range %}
+                    <option value={{ week }}>Week {{week|add:"1"}}</option>
+                {% endfor %}
+            </select>
+        </div>
         <table id="rankings-table" class="table table-striped table-bordered">       
             <thead>
                 <tr>

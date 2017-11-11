@@ -30,4 +30,4 @@ def api_get_rankings_data(request):
     return JsonResponse({ 'data' : rankings_data })
 
 def rankings(request):
-    return render(request, 'app/rankings.html')
+    return render(request, 'app/rankings.html', context={'week_range' : reversed(range(vexdb.get_num_weeks_to_today()))})
