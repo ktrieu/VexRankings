@@ -5,8 +5,10 @@
     <Name>VexRankings</Name>
     <RootNamespace>VexRankings</RootNamespace>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
-    <CommandLineArguments>rank</CommandLineArguments>
+    <CommandLineArguments>
+    </CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+    <WebBrowserPort>%SERVER_PORT%</WebBrowserPort>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -19,7 +21,7 @@
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <WebBrowserUrl>http://localhost</WebBrowserUrl>
-    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <LaunchProvider>Django launcher</LaunchProvider>
     <OutputPath>.</OutputPath>
     <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
   </PropertyGroup>
@@ -30,6 +32,12 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DebugSymbols>true</DebugSymbols>
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Rank Command' ">
+    <OutputPath>bin\Rank Command\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Web Server' ">
+    <OutputPath>bin\Web Server\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app\forms.py" />
@@ -70,14 +78,76 @@
     <Folder Include="app\rankings\" />
     <Folder Include="app\static\" />
     <Folder Include="app\static\app\" />
-    <Folder Include="app\static\app\content\" />
-    <Folder Include="app\static\app\fonts\" />
-    <Folder Include="app\static\app\scripts\" />
+    <Folder Include="app\static\app\bootstrap\" />
+    <Folder Include="app\static\app\bootstrap\css\" />
+    <Folder Include="app\static\app\bootstrap\js\" />
+    <Folder Include="app\static\app\datatables\" />
+    <Folder Include="app\static\app\datatables\DataTables-1.10.16\" />
+    <Folder Include="app\static\app\datatables\DataTables-1.10.16\css\" />
+    <Folder Include="app\static\app\datatables\DataTables-1.10.16\images\" />
+    <Folder Include="app\static\app\datatables\DataTables-1.10.16\js\" />
+    <Folder Include="app\static\app\datatables\jQuery-3.2.1\" />
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
     <Folder Include="VexRankings\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\static\app\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="app\static\app\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="app\static\app\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="app\static\app\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="app\static\app\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="app\static\app\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="app\static\app\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="app\static\app\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="app\static\app\bootstrap\css\bootstrap.css" />
+    <Content Include="app\static\app\bootstrap\css\bootstrap.css.map" />
+    <Content Include="app\static\app\bootstrap\css\bootstrap.min.css" />
+    <Content Include="app\static\app\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="app\static\app\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="app\static\app\bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="app\static\app\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="app\static\app\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="app\static\app\bootstrap\js\bootstrap.js" />
+    <Content Include="app\static\app\bootstrap\js\bootstrap.js.map" />
+    <Content Include="app\static\app\bootstrap\js\bootstrap.min.js" />
+    <Content Include="app\static\app\bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\css\dataTables.bootstrap.css" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\css\dataTables.bootstrap.min.css" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\css\dataTables.bootstrap4.css" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\css\dataTables.bootstrap4.min.css" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\css\dataTables.foundation.css" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\css\dataTables.foundation.min.css" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\css\dataTables.jqueryui.css" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\css\dataTables.jqueryui.min.css" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\css\dataTables.semanticui.css" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\css\dataTables.semanticui.min.css" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\css\jquery.dataTables.css" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\css\jquery.dataTables.min.css" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\images\sort_asc.png" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\images\sort_asc_disabled.png" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\images\sort_both.png" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\images\sort_desc.png" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\images\sort_desc_disabled.png" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\js\dataTables.bootstrap.js" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\js\dataTables.bootstrap.min.js" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\js\dataTables.bootstrap4.js" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\js\dataTables.bootstrap4.min.js" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\js\dataTables.foundation.js" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\js\dataTables.foundation.min.js" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\js\dataTables.jqueryui.js" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\js\dataTables.jqueryui.min.js" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\js\dataTables.semanticui.js" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\js\dataTables.semanticui.min.js" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\js\jquery.dataTables.js" />
+    <Content Include="app\static\app\datatables\DataTables-1.10.16\js\jquery.dataTables.min.js" />
+    <Content Include="app\static\app\datatables\datatables.css" />
+    <Content Include="app\static\app\datatables\datatables.js" />
+    <Content Include="app\static\app\datatables\datatables.min.css" />
+    <Content Include="app\static\app\datatables\datatables.min.js" />
+    <Content Include="app\static\app\datatables\jQuery-3.2.1\jquery-3.2.1.js" />
+    <Content Include="app\static\app\datatables\jQuery-3.2.1\jquery-3.2.1.min.js" />
+    <Content Include="app\templates\app\rankings.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
