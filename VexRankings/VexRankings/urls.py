@@ -15,5 +15,6 @@ admin.autodiscover()
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', app.views.rankings)
+    url(r'^$', app.views.rankings),
+    url(r'^api/get_rankings/', app.views.api_get_rankings_data)
 ]
