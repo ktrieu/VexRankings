@@ -7,6 +7,14 @@ SEASON_START = dateparse.parse_date('2017-06-04')
 EVENTS_URL = 'https://api.vexdb.io/v1/get_events'
 MATCHES_URL = 'https://api.vexdb.io/v1/get_matches'
 
+def get_num_weeks_to_today():
+    start_date = SEASON_START
+    weeks_to_today = 0
+    while start_date < datetime.date.today():
+        start_date += datetime.timedelta(weeks=1)
+        weeks_to_today += 1
+    return weeks_to_today
+
 def get_skus_on_dates(dates):
     event_params = {
             'program' : 'VRC',
