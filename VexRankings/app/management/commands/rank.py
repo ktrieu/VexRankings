@@ -10,7 +10,8 @@ class Command(BaseCommand):
         weeks_to_today = vexdb.get_num_weeks_to_today()
         vex_ranker = ranker.Ranker()
         for week_num in range(weeks_to_today):
-            self.stdout.write(f'Ranking week {week_num}')
+            dates = vexdb.get_dates_in_week(week_num)
+            self.stdout.write(f'Ranking week {week_num}. {dates[0]} to {dates[-1]}')
             vex_ranker.rank_matches_in_week(week_num)
         self.stdout.write('Ranking complete.')
         self.stdout.write('Saving...')
