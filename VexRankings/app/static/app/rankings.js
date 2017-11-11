@@ -3,8 +3,14 @@ $(document).ready(function() {
         ajax : "/api/get_rankings",
         columns : [
             { data : "name" },
-            { data : "elo" },
-            { data : "elo_change" }
+            { 
+                data : "elo",
+                render : $.fn.dataTable.render.number( ',', '.', 0)
+            },
+            { 
+                data : "elo_change",
+                render : $.fn.dataTable.render.number( ',', '.', 0)
+            },
         ]
     });
 });
