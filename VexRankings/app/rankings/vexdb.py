@@ -10,7 +10,7 @@ MATCHES_URL = 'https://api.vexdb.io/v1/get_matches'
 def get_num_weeks_to_today():
     start_date = SEASON_START
     weeks_to_today = 0
-    while start_date < datetime.date.today():
+    while start_date <= datetime.date.today():
         start_date += datetime.timedelta(weeks=1)
         weeks_to_today += 1
     return weeks_to_today
