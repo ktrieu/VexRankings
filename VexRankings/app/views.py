@@ -10,7 +10,7 @@ from django.core import serializers
 from django.db.models import F
 from datetime import datetime
 
-from app.rankings import vexdb
+from app.rankings import vexdb, ranker
 from app.models import Team
 
 def api_get_rankings_data(request):
@@ -28,6 +28,23 @@ def api_get_rankings_data(request):
             'elo_change' : team.elo_changes[week_num - 1]
             })
     return JsonResponse({ 'data' : rankings_data })
+
+def api_predict_match(request):
+    try:
+        red_team1 = request.GET['red_team1']
+        red_team2 = request.GET['red_team2']
+        blue_team1 = request.GET['blue_team1']
+        blue_team2 = request.GET['blue_team2']
+        week_num = int(request.GET['week_num'])
+    except KeyError:
+        return HttpResponse(status=400)
+    red_elo1 = Team.objects.get(name=red_team1).elos[week_num - 1]
+    red_elo2 = Team.objects.get(name=red_team2).elos[week_num - 1]
+    blue_elo1 = Team.objects.get(name=blue_team1).elos[week_num - 1]
+    blue_elo2 = Team.objects.get(name=blue_team2).elos[week_num - 1]
+    red_chance, blue_chance = ranker.Ranker.predict_match(red_elo1, red_elo2, blue_elo1, blue_elo2)
+    return JsonResponse({'red_chance' : red_chance, 'blue_chance' : blue_chance})
+
 
 def rankings(request):
     return render(request, 'app/rankings.html', context={'week_range' : reversed(range(vexdb.get_num_weeks_to_today()))})
