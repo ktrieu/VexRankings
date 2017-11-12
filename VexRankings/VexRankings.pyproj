@@ -151,6 +151,7 @@
     <Content Include="app\static\app\datatables\jQuery-3.2.1\jquery-3.2.1.min.js" />
     <Content Include="app\static\app\jquery\jquery-3.2.1.js" />
     <Content Include="app\static\app\popper\popper.js" />
+    <Content Include="app\static\app\rankings.css" />
     <Content Include="app\static\app\rankings.js" />
     <Content Include="app\templates\app\rankings.html" />
     <Content Include="requirements.txt" />

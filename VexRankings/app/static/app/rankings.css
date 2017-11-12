@@ -1,0 +1,16 @@
+.red-chance {
+    color: red;
+}
+
+.red-chance::after {
+    content: "%";
+}
+
+.blue-chance {
+    color: blue;
+    
+}
+
+.blue-chance::after {
+    content: "%"
+}
