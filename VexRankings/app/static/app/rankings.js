@@ -15,6 +15,6 @@ $(document).ready(function() {
     });
 
     $("#week-select").change(function () {
-        rankings_table.ajax.url("/api/get_rankings?week_num=" + $("#week-select").val()).load()
+        rankings_table.ajax.url("/api/get_rankings?week_idx=" + $("#week-select").val()).load()
     });
 });

@@ -14,18 +14,18 @@ from app.rankings import vexdb, ranker
 from app.models import Team
 
 def api_get_rankings_data(request):
-    week_num = request.GET.get('week_num', None)
-    if week_num == None:
-        week_num = vexdb.get_num_weeks_to_today()
+    week_idx = request.GET.get('week_idx', None)
+    if week_idx == None:
+        week_idx = vexdb.get_today_week_idx()
     else:
-        week_num = int(week_num)
+        week_idx = int(week_idx)
     ordered_teams = Team.objects.all()
     rankings_data = list()
     for team in ordered_teams:
         rankings_data.append({
             'name' : team.name,
-            'elo' : team.elos[week_num - 1],
-            'elo_change' : team.elo_changes[week_num - 1]
+            'elo' : team.elos[week_idx],
+            'elo_change' : team.elo_changes[week_idx]
             })
     return JsonResponse({ 'data' : rankings_data })
 
@@ -35,16 +35,16 @@ def api_predict_match(request):
         red_team2 = request.GET['red_team2']
         blue_team1 = request.GET['blue_team1']
         blue_team2 = request.GET['blue_team2']
-        week_num = int(request.GET['week_num'])
+        week_num = int(request.GET['week_idx'])
     except KeyError:
         return HttpResponse(status=400)
-    red_elo1 = Team.objects.get(name=red_team1).elos[week_num - 1]
-    red_elo2 = Team.objects.get(name=red_team2).elos[week_num - 1]
-    blue_elo1 = Team.objects.get(name=blue_team1).elos[week_num - 1]
-    blue_elo2 = Team.objects.get(name=blue_team2).elos[week_num - 1]
+    red_elo1 = Team.objects.get(name=red_team1).elos[week_idx]
+    red_elo2 = Team.objects.get(name=red_team2).elos[week_idx]
+    blue_elo1 = Team.objects.get(name=blue_team1).elos[week_idx]
+    blue_elo2 = Team.objects.get(name=blue_team2).elos[week_idx]
     red_chance, blue_chance = ranker.Ranker.predict_match(red_elo1, red_elo2, blue_elo1, blue_elo2)
     return JsonResponse({'red_chance' : red_chance, 'blue_chance' : blue_chance})
 
 
 def rankings(request):
-    return render(request, 'app/rankings.html', context={'week_range' : reversed(range(vexdb.get_num_weeks_to_today()))})
+    return render(request, 'app/rankings.html', context={'week_range' : reversed(range(vexdb.get_today_week_idx() + 1))})
