@@ -32,12 +32,12 @@ class Ranker:
         else:
             team.elos[week_num] = team.elos[week_num - 1]
 
-    def calc_alliance_elo(self, team_elo1, team_elo2):
+    def calc_alliance_elo(team_elo1, team_elo2):
         return (team_elo1 + team_elo2) / 2
 
-    def predict_match(self, red_elo1, red_elo2, blue_elo1, blue_elo2):
-        red_elo = self.calc_alliance_elo(red_elo1, red_elo2)
-        blue_elo = self.calc_alliance_elo(blue_elo1, blue_elo2)
+    def predict_match(red_elo1, red_elo2, blue_elo1, blue_elo2):
+        red_elo = Ranker.calc_alliance_elo(red_elo1, red_elo2)
+        blue_elo = Ranker.calc_alliance_elo(blue_elo1, blue_elo2)
         #transform elos according to the elo formula
         red_elo = math.pow(10, red_elo / 400)
         blue_elo = math.pow(10, blue_elo / 400)
@@ -90,7 +90,7 @@ class Ranker:
                 self.update_latest_elo(team, week_num)
 
     def rank_match(self, red_team1, red_team2, blue_team1, blue_team2, match, week_num):
-        red_expected, blue_expected = self.predict_match(red_team1.elos[week_num], red_team2.elos[week_num],
+        red_expected, blue_expected = Ranker.predict_match(red_team1.elos[week_num], red_team2.elos[week_num],
                                                          blue_team1.elos[week_num], blue_team2.elos[week_num])
         red_actual = 0
         blue_actual = 0
