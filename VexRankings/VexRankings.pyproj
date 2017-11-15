@@ -88,6 +88,7 @@
     <Folder Include="app\static\app\datatables\DataTables-1.10.16\js\" />
     <Folder Include="app\static\app\datatables\jQuery-3.2.1\" />
     <Folder Include="app\static\app\jquery\" />
+    <Folder Include="app\static\app\odometer\" />
     <Folder Include="app\static\app\popper\" />
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
@@ -150,6 +151,8 @@
     <Content Include="app\static\app\datatables\jQuery-3.2.1\jquery-3.2.1.js" />
     <Content Include="app\static\app\datatables\jQuery-3.2.1\jquery-3.2.1.min.js" />
     <Content Include="app\static\app\jquery\jquery-3.2.1.js" />
+    <Content Include="app\static\app\odometer\odometer-theme-default.css" />
+    <Content Include="app\static\app\odometer\odometer.js" />
     <Content Include="app\static\app\popper\popper.js" />
     <Content Include="app\static\app\rankings.css" />
     <Content Include="app\static\app\rankings.js" />
