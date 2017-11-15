@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath VexRankings/VexRankings VexRankings.wsgi --log-file -
+web: gunicorn --pythonpath VexRankings VexRankings.wsgi --log-file -
