@@ -22,13 +22,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'b67b805b-32eb-40b3-b4b3-8f872b2db024'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '5nf&im$0)uk&lrjfu4^90ut55nv)gg_m09nyfo(1y=(d_ai01_')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['localhost', 'vex-elo-rankings.herokuapp.com']
 
 # Application definition
 
