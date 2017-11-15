@@ -33,46 +33,48 @@
                 </tr>
             </thead>
         </table>
-        <div class="container pt-3 pb-3">
-            <h1 class="display-4 text-center">Predict Match</h1>
-            <div class="row">
-                <div class="col">
-                    <div>
-                        <h1 class="display-1 red-chance">0</h1>
-                        <p>chance that the red team wins</p>
+        <form role="form" id="predict-form">
+            <div class="container pt-3 pb-3">
+                <h1 class="display-4 text-center">Predict Match</h1>
+                <div class="row">
+                    <div class="col">
+                        <div>
+                            <h1 class="display-1 red-chance">0</h1>
+                            <p>chance that the red team wins</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="red-team-1">Red Team 1:</label>
+                            <input class="form-control" id="red-team-1" name="red_team1" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="red-team-2">Red Team 2:</label>
+                            <input class="form-control" id="red-team-2" name="red_team2" required/>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="red-team-1">Red Team 1:</label>
-                        <input class="form-control" id="red-team-1" />
-                    </div>
-                    <div class="form-group">
-                        <label for="red-team-2">Red Team 2:</label>
-                        <input class="form-control" id="red-team-2" />
-                    </div>
-                </div>
-                <!--Empty column here to keep some space in between the other two-->
-                <div class="col">
+                    <!--Empty column here to keep some space in between the other two-->
+                    <div class="col">
 
+                    </div>
+                    <div class="col">
+                        <div class="float-right">
+                            <h1 class="display-1 float-right blue-chance">0</h1>
+                            <p class="float-right">chance that the blue team wins</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="float-right" for="blue-team-1">Blue Team 1:</label>
+                            <input class="form-control" id="blue-team-1" name="blue_team1" required/>
+                        </div>
+                        <div class="form-group">
+                            <label class="float-right" for="blue-team-2">Blue Team 2:</label>
+                            <input class="form-control" id="blue-team-2" name="blue_team2" required/>
+                        </div>
+                    </div>
                 </div>
-                <div class="col">
-                    <div class="float-right">
-                        <h1 class="display-1 float-right blue-chance">0</h1>
-                        <p class="float-right">chance that the blue team wins</p>
-                    </div>
-                    <div class="form-group">
-                        <label class="float-right" for="blue-team-1">Blue Team 1:</label>
-                        <input class="form-control" id="blue-team-1" />
-                    </div>
-                    <div class="form-group">
-                        <label class="float-right" for="blue-team-2">Blue Team 2:</label>
-                        <input class="form-control" id="blue-team-2" />
-                    </div>
+                <div class="text-center">
+                    <button class="btn btn-success" type="submit" id="predict-btn"><h1>Predict Match</h1></button>
                 </div>
             </div>
-            <div class="text-center">
-                <button class="btn btn-success" id="predict-btn"><h1>Predict Match</h1></button>
-            </div>
-        </div>
+        </form>
     </div>
 </body>
 </html>
