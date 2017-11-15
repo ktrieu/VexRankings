@@ -35,7 +35,7 @@ def api_predict_match(request):
         red_team2 = request.GET['red_team2']
         blue_team1 = request.GET['blue_team1']
         blue_team2 = request.GET['blue_team2']
-        week_num = int(request.GET['week_idx'])
+        week_idx = int(request.GET['week_idx'])
     except KeyError:
         return HttpResponse(status=400)
     red_elo1 = Team.objects.get(name=red_team1).elos[week_idx]
@@ -43,7 +43,7 @@ def api_predict_match(request):
     blue_elo1 = Team.objects.get(name=blue_team1).elos[week_idx]
     blue_elo2 = Team.objects.get(name=blue_team2).elos[week_idx]
     red_chance, blue_chance = ranker.Ranker.predict_match(red_elo1, red_elo2, blue_elo1, blue_elo2)
-    return JsonResponse({'red_chance' : red_chance, 'blue_chance' : blue_chance})
+    return JsonResponse({'red_chance' : round(red_chance * 100, 2), 'blue_chance' : round(blue_chance * 100, 2)})
 
 
 def rankings(request):
