@@ -89,6 +89,7 @@
     <Folder Include="app\static\app\datatables\jQuery-3.2.1\" />
     <Folder Include="app\static\app\jquery\" />
     <Folder Include="app\static\app\animate-number\" />
+    <Folder Include="app\static\app\typeahead\" />
     <Folder Include="app\static\app\popper\" />
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
@@ -155,6 +156,7 @@
     <Content Include="app\static\app\popper\popper.js" />
     <Content Include="app\static\app\rankings.css" />
     <Content Include="app\static\app\rankings.js" />
+    <Content Include="app\static\app\typeahead\bootstrap3-typeahead.js" />
     <Content Include="app\templates\app\rankings.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
