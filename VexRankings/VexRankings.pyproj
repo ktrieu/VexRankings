@@ -94,6 +94,7 @@
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
     <Folder Include="VexRankings\" />
+    <Folder Include="VexRankings\static\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\static\app\animate-number\jquery.animateNumber.js" />
@@ -159,6 +160,7 @@
     <Content Include="app\static\app\typeahead\bootstrap3-typeahead.js" />
     <Content Include="app\templates\app\rankings.html" />
     <Content Include="requirements.txt" />
+    <Content Include="VexRankings\static\.gitkeep" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="..\env\">

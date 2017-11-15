@@ -265,3 +265,4 @@ env/
 
 #Collected static files
 VexRankings/static/
+staticfiles/
