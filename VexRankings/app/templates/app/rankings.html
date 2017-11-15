@@ -10,9 +10,12 @@
     <script src="{% static "app/popper/popper.js" %}"></script>
     <script src="{% static "app/bootstrap/js/bootstrap.js" %}"></script>
     <script src="{% static "app/datatables/datatables.js" %}"></script>
+    <script src="{% static "app/odometer/odometer.js" %}"></script>
+    <script src="{% static "app/animate-number/jquery.animateNumber.js" %}"></script>
     <script src="{% static "app/rankings.js" %}"></script>
     <link type="text/css" rel="stylesheet" href={% static "app/bootstrap/css/bootstrap.css" %}>
     <link type="text/css" rel="stylesheet" href={% static "app/datatables/datatables.css" %}>
+    <link type="text/css" rel="stylesheet" href={% static "app/odometer/odometer-theme-default.css" %}>
     <link type="text/css" rel="stylesheet" href={% static "app/rankings.css" %} />
 </head>
 <body>
@@ -55,17 +58,16 @@
                     <div class="col">
 
                     </div>
-                    <div class="col">
-                        <div class="float-right">
-                            <h1 class="display-1 float-right blue-chance">0</h1>
-                            <p class="float-right">chance that the blue team wins</p>
+                    <div class="col text-right">
+                        <div>
+                            <p>chance that the blue team wins</p>
                         </div>
                         <div class="form-group">
-                            <label class="float-right" for="blue-team-1">Blue Team 1:</label>
+                            <label for="blue-team-1">Blue Team 1:</label>
                             <input class="form-control" id="blue-team-1" name="blue_team1" required/>
                         </div>
                         <div class="form-group">
-                            <label class="float-right" for="blue-team-2">Blue Team 2:</label>
+                            <label for="blue-team-2">Blue Team 2:</label>
                             <input class="form-control" id="blue-team-2" name="blue_team2" required/>
                         </div>
                     </div>
