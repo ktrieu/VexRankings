@@ -17,5 +17,6 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', app.views.rankings),
     url(r'^api/get_rankings/', app.views.api_get_rankings_data),
-    url(r'^api/predict_match/', app.views.api_predict_match)
+    url(r'^api/predict_match/', app.views.api_predict_match),
+    url(r'^api/suggest_team/', app.views.api_suggest_team)
 ]

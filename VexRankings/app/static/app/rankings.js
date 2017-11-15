@@ -22,6 +22,12 @@ animate_chance = function(selector, num) {
       );
 }
 
+suggest_team = function(query, callback) {
+    results = $.get("/api/suggest_team?query=" + query, function(data) {
+        callback(data);
+    }); 
+}
+
 $(document).ready(function() {
     var rankings_table = $("#rankings-table").DataTable({
         ajax : "/api/get_rankings",
@@ -50,4 +56,10 @@ $(document).ready(function() {
             animate_chance($(".blue-chance"), data.blue_chance);
         });
     });
+
+    $(".team-input").typeahead({
+        source: suggest_team,
+        autoSelect: false
+    });
+
 });
