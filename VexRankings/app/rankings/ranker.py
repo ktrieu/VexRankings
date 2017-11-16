@@ -9,6 +9,10 @@ class Ranker:
     teams = dict()
     ranked_skus = set()
 
+    def reload_from_database(self):
+        for team in Team.objects.all():
+            self.teams[team.name] = team
+
     def get_playing_team_names(self, match):
         red_teams = [match['red1'], match['red2']]
         blue_teams = [match['blue1'], match['blue2']]
@@ -58,6 +62,11 @@ class Ranker:
             return 1
         else:
             return math.log(margin, 10) + 1
+
+    def rerank_week(self, week_num):
+        for team in self.teams.values():
+            team.elos[week_num] = team.elos[week_num - 1]
+        self.rank_matches_in_week(week_num)
 
     def rank_matches_in_week(self, week_num):
         dates = vexdb.get_dates_in_week(week_num)
