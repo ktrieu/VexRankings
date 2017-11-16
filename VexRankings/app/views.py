@@ -12,7 +12,7 @@ from django.db.models.functions import Length
 from datetime import datetime
 
 from app.rankings import vexdb, ranker
-from app.models import Team
+from app.models import Team, LastUpdated
 
 def api_get_rankings_data(request):
     week_idx = request.GET.get('week_idx', None)
@@ -55,4 +55,8 @@ def api_suggest_team(request):
     return JsonResponse(suggested_names, safe=False)
 
 def rankings(request):
-    return render(request, 'app/rankings.html', context={'week_range' : reversed(range(vexdb.get_today_week_idx() + 1))})
+    ctx = {
+        'week_range' : reversed(range(vexdb.get_today_week_idx() + 1)),
+        'last_updated' : list(LastUpdated.objects.all())[0].update_datetime
+    }
+    return render(request, 'app/rankings.html', ctx)

@@ -1,8 +1,10 @@
 from django.core.management.base import BaseCommand, CommandError
 from app.models import Team
+from app.models import LastUpdated
 import app.rankings.vexdb as vexdb
 import app.rankings.ranker as ranker
 import datetime
+import pytz
 
 class Command(BaseCommand):
 
@@ -40,3 +42,7 @@ class Command(BaseCommand):
             self.stdout.write('Saving...')
             vex_ranker.save_to_database()
             self.stdout.write('Complete.')
+        LastUpdated.objects.all().delete()
+        updated = LastUpdated()
+        updated.update_datetime = datetime.datetime.now(pytz.utc)
+        updated.save()

@@ -22,3 +22,8 @@ class Team(models.Model):
         return self.name
 
 admin.site.register(Team)
+
+class LastUpdated(models.Model):
+    update_datetime = models.DateTimeField()
+
+admin.site.register(LastUpdated)

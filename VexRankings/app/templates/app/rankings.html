@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 
 {% load static %}
+{% load tz %}
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -25,6 +26,9 @@
                     <option value={{ week }}>Week {{week|add:"1"}}</option>
                 {% endfor %}
             </select>
+        </div>
+        <div class="text-center">
+            <p>Last updated: {{ last_updated }} UTC</p>
         </div>
         <table id="rankings-table" class="table table-striped table-bordered">       
             <thead>
