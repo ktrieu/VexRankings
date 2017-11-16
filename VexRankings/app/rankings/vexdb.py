@@ -7,6 +7,13 @@ SEASON_START = dateparse.parse_date('2017-06-04')
 EVENTS_URL = 'https://api.vexdb.io/v1/get_events'
 MATCHES_URL = 'https://api.vexdb.io/v1/get_matches'
 
+def make_request(url, params):
+    headers = {
+        'User-Agent': 'Vex Elo Rankings',
+        'From': 'dragn194@gmail.com'
+    }
+    return requests.get(url, params=params, headers=headers)
+
 def get_today_week_idx():
     start_date = SEASON_START
     weeks_to_today = 0
@@ -24,7 +31,7 @@ def get_skus_on_dates(dates):
     skus = list()
     for date in dates:
         event_params['date'] = date
-        r = requests.get(EVENTS_URL, params=event_params).json()
+        r = make_request(EVENTS_URL, event_params).json()
         if r['status'] == 1:
             for event in r['result']:
                 skus.append(event['sku'])
@@ -37,7 +44,7 @@ def get_matches_from_sku(sku):
     match_params = {
             'sku' : sku
         }
-    r = requests.get(MATCHES_URL, params=match_params).json()
+    r = make_request(MATCHES_URL, match_params).json()
     if r['status'] == 1:
         return r['result']
     else:
