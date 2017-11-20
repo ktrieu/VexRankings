@@ -65,7 +65,11 @@ class Ranker:
 
     def rerank_week(self, week_num):
         for team in self.teams.values():
-            team.elos[week_num] = team.elos[week_num - 1]
+            if len(team.elos) == week_num:
+                #it's the first rank of a new week
+                team.elos.append(team.elos[-1])
+            else:
+                team.elos[week_num] = team.elos[week_num - 1]
         self.rank_matches_in_week(week_num)
 
     def rank_matches_in_week(self, week_num):
